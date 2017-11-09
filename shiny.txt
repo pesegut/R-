@@ -1,0 +1,25 @@
+#安裝 & 載入shiny
+install.packages("shiny")
+library(shiny)
+# shiny的主要架構有二：一為呈現(UI)，
+# 另一為後端程式(Server)。
+# 以下為簡單的UI：
+# 該UI為直接PRINT 
+ui <- fluidPage("Hello World")
+# 該UI為建立一個可互動拉軸
+ui_1 <- fluidPage(
+  sliderInput(inputId= "num",
+              label= "Choose a number",
+              value = 25, #初始值
+              min = 1,    #最小值
+              max = 100   #最大值
+  ),
+  actionButton(inputId = "testbotton",
+               label = "Try Again",
+  )
+)
+
+server <- function(input,output){}
+
+shinyApp(ui = ui_1 ,server=server)
+
